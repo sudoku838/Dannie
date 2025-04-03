@@ -6,8 +6,12 @@ class AddressApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Адресная книжка")
-        self.root.geometry("400x400")  # Установка фиксированного размера окна
-        # Создание фрейма для ввода данных
+        self.root.geometry("400x500")
+        #создаем папку для сохранения данных
+        self.data_folder = "address_data"
+        if not os.path.exists(self.data_folder):
+            os.makedirs(self.data_folder)
+        # Cоздание фрейма для ввода данных
         self.frame = tk.Frame(self.root)
         self.frame.pack(pady=10)
         #Поля ввода
