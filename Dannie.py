@@ -6,11 +6,14 @@ class AddressApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Адресная книжка")
-        self.root.geometry("400x400")  # Установка фиксированного размера окна
-        # Создание фрейма для ввода данных
+        self.root.geometry("400x500")
+        #создаем папку для сохранения данных
+        self.data_folder = "address_data"
+        if not os.path.exists(self.data_folder):
+            os.makedirs(self.data_folder)
         self.frame = tk.Frame(self.root)
         self.frame.pack(pady=10)
-        #Поля ввода
+        #сам ввод
         self.name_label = tk.Label(self.frame, text="Имя:")
         self.name_label.grid(row=0, column=0, padx=5, pady=5)
         self.name_entry = tk.Entry(self.frame, width=30)
@@ -28,7 +31,7 @@ class AddressApp:
         self.email_label.grid(row=3, column=0, padx=5, pady=5)
         self.email_entry = tk.Entry(self.frame, width=30)
         self.email_entry.grid(row=3, column=1, padx=5, pady=5)
-        #Кнопки
+    #кнопки
         self.button_frame = tk.Frame(self.root)
         self.button_frame.pack(pady=5)
         self.add_button = tk.Button(self.button_frame, text="Добавить", command=self.add_entry, width=10)
